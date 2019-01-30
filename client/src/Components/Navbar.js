@@ -21,7 +21,7 @@ class Navbar extends Component {
         return(
             <nav className="navbar">
                 <NavLink to="/" className="nav-link" >
-                    <h1>POSTS</h1>
+                    <h1>OLX</h1>
                 </NavLink>
                 <ul className="navbar--itemsContainer">
                     <NavbarItem isLogged={this.state.isLogged} currentUser={this.state.currentUser}/>

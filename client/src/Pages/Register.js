@@ -121,7 +121,7 @@ const CustomForm = (props) => {
         render={({ values, errors, handleChange, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
 
-<               label htmlFor="username">
+                <label htmlFor="username">
                     username
                     <input type="text" name="username" placeholder="username" value={values.username} onChange={handleChange}/>
                     <span>{errors.username}</span>

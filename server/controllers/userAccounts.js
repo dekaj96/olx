@@ -7,14 +7,12 @@ exports.userAccounts_get_all = (req,res) => {
     .catch(err => res.status(500).json({ error: err }));
 }
 
-
 exports.userAccounts_get_byId = (req,res,next) => {
     const id = req.params.id;
     User.findById(id)
     .then(user => res.status(200).json(user))
     .catch(err => res.status(500).json({ error: err}));
 }
-
 
 exports.userAccounts_update = (req, res, next) => {
     const updateObject = req.body;
@@ -23,7 +21,6 @@ exports.userAccounts_update = (req, res, next) => {
     .then(() => res.status(200).json(({ message: 'User details has been updated' })))
     .catch(err => res.status(500).json({ error: err }));
 }
-
 
 exports.userAccounts_remove = (req,res) => {
     const id = req.params.id;

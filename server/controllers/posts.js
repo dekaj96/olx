@@ -14,12 +14,25 @@ exports.posts_get_all = (req, res) => {
     .catch(err => res.status(500).json({ error: err }));
 }
 
+
+
 exports.posts_get_byId = (req,res,next) => {
     const id = req.params.id;
     Post.findById(id)
-    .then(job => res.status(200).json(job))
+    .then(job => {
+        if(job){
+            res.status(200).json(job);
+        }
+        else{
+            Post.find({ user: id })
+            .then(job => res.status(200).json(job))
+            .catch(err => res.status(500).json({ error: err }));
+        }
+    })
     .catch(err => res.status(500).json({ error: err}));
 }
+
+
 
 exports.posts_update = (req, res, next) => {
     const updateObject = req.body;
@@ -28,6 +41,8 @@ exports.posts_update = (req, res, next) => {
     .then(result => res.status(200).json(({ message: 'post had been edited' })))
     .catch(err => res.status(500).json({ error: err }));
 }
+
+
 
 exports.posts_create = (req,res) => {
     const { title, description, min_price, max_price, city, photo, categories, user } = req.body;
@@ -41,6 +56,8 @@ exports.posts_create = (req,res) => {
     .then(job => res.status(201).json(job))
     .catch(err => res.status(500).json({ error: err }));
 }
+
+
 
 exports.posts_remove = (req,res) => {
     const id = req.params.id;
