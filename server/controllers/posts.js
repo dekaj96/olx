@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const Category = require('../models/PostCategory');
 
 exports.posts_get_all = (req, res) => {
     Post.find()
@@ -29,22 +30,32 @@ exports.posts_update = (req, res, next) => {
 }
 
 exports.posts_create = (req,res) => {
-    const { title, description, min_price, max_price, city, photo } = req.body;
+    const { title, description, min_price, max_price, city, photo, categories, user } = req.body;
 
     var toPost = {};
     if (photo === undefined || photo === null)
-        toPost = new User({ title, description, price });
+        toPost = new Post({ title, description, min_price, max_price, city, categories, user });
     else
-        toPost = new User({ title, description, price, photo });
-
-    const newPost = new Post(toPost);
-    newPost.save()
+        toPost = new Post({ title, description, min_price, max_price, city, photo, categories, user });
+    toPost.save()
     .then(job => res.status(201).json(job))
     .catch(err => res.status(500).json({ error: err }));
 }
 
 exports.posts_remove = (req,res) => {
     const id = req.params.id;
+
+    Post.findOne({ _id: id })
+    .then(p => {
+            for (var i = 0; i < p.categories.length; i++) {
+                Category.update({ _id: p.categories[i] }, { $pull: {posts: p._id}} )
+                .then(() => res.status(200).json(({ message: 'Post deleted from the category' })))
+                .catch(err => res.status(500).json({ error: err }));
+            }
+        res.status(200).json(user);
+    })
+    .catch(err => res.status(500).json({ error: err}));
+
     Post.remove({ _id: id })
     .then(result => res.status(200).json({ message: 'Success '}))
     .catch(err => res.status(200).json({ error: err }));

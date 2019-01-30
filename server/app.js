@@ -26,7 +26,7 @@ const postCategoriesRoutes = require('./routes/api/postCategory');
 const usersRoutes = require('./routes/api/users');
 
 app.use('/api/auth', authRoutes);
-app.use('/api/post', postsRoutes);
+app.use('/api/posts', postsRoutes);
 app.use('/api/post-category', postCategoriesRoutes);
 app.use('/api/user', usersRoutes);
 

@@ -1,4 +1,4 @@
-export const RemoveData = (endpoint) => {
+export const DeleteData = (endpoint) => {
     return new Promise ((resolve, reject) => {
         fetch(`http://localhost:4000/api/${endpoint}`, {
             method: 'DELETE',

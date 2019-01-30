@@ -1,4 +1,4 @@
-export const PatchData = (endpoint, data) => {
+export const ChangeData = (endpoint, data) => {
     return new Promise ((resolve, reject) => {
         fetch(`http://localhost:4000/api/${endpoint}`, {
             method: 'PATCH',
