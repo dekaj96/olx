@@ -4,8 +4,12 @@ const Schema = mongoose.Schema;
 const PostSchema = new Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
-    price: { type: Number, required: true, min: 0, max: 100000 },
-    photo: { type: String,  default:'https://www.tibs.org.tw/images/default.jpg'}
+    min_price: { type: Number, required: true, min: 0 },
+    max_price: { type: Number, required: true, max: 100000 },
+    city: { type: String, trim: true },
+    photo: { type: String,  default:'https://www.tibs.org.tw/images/default.jpg'},
+    user: { type: Schema.Types.ObjectId, ref: 'UserAccount', required: true },
+    categories: [{ type: Schema.Types.ObjectId, ref: 'Category' }]
 });
 
 module.exports = mongoose.model('Post', PostSchema);

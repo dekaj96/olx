@@ -29,7 +29,7 @@ exports.posts_update = (req, res, next) => {
 }
 
 exports.posts_create = (req,res) => {
-    const { title, description, price, photo } = req.body;
+    const { title, description, min_price, max_price, city, photo } = req.body;
 
     var toPost = {};
     if (photo === undefined || photo === null)

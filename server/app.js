@@ -22,12 +22,12 @@ passport();
 
 const authRoutes = require('./routes/api/auth');
 const postsRoutes = require('./routes/api/posts');
-const postStatesRoutes = require('./routes/api/postStates');
+const postCategoriesRoutes = require('./routes/api/postCategory');
 const usersRoutes = require('./routes/api/users');
 
-app.use('/api.auth', authRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/post', postsRoutes);
-app.use('/api/post-state', postStatesRoutes);
+app.use('/api/post-category', postCategoriesRoutes);
 app.use('/api/user', usersRoutes);
 
 app.use((req,res,next) =>{
