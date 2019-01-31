@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, FieldArray, Form } from 'formik';
+import { Formik, FieldArray, Form, isEmptyChildren } from 'formik';
 import { PostData } from '../../Services/PostData';
 import { ChangeData } from '../../Services/ChangeData';
 const AddPostFormik = (props) => {
@@ -58,15 +58,17 @@ const AddPostFormik = (props) => {
                     errors.description = 'too short! minimum 20';
 
                 if(values.min_price < 0)
-                    errors.min_price = 'insert positive number';
+                    errors.min_price = 'inser positive number';
 
                 if(values.max_price > 1000000)
-                    errors.max_price = 'too big';
+                    errors.max_price = 'too big number';
+                else if(values.max_price < 50)
+                    errors.max_price = 'too small number';
 
                 return errors;
             }}
-            render={({ values, errors, handleChange }) => (
-                <Form>
+            render={({ values, errors, handleChange, handleSubmit }) => (
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="title">
                         title
                         <input type="text" name="title" placeholder="title" value={values.title} onChange={handleChange}/>
@@ -130,7 +132,7 @@ const AddPostFormik = (props) => {
                         )}
                     />
                     <button type="submit">Add</button>
-                </Form>
+                </form>
             )}
         />
         );

@@ -52,7 +52,9 @@ class PostPage extends Component{
 class PostListContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = { selectedCat: "" };
+        this.state = {
+            selectedCat: ""
+        };
     }
 
     handleChange = e => {
@@ -120,7 +122,7 @@ class PostList extends Component {
   }
 
   const PostItem = ({
-    id, title, description,photo,min_price,max_price,city
+    id, title, description, photo, min_price, max_price, city
   }) => {
     return (
       <li key={id} className="single-post">
