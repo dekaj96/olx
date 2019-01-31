@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from '../Components/Navbar';
-import { PostData } from '../Services/PostData';
+import Navbar from '../../Components/Navbar';
+import { PostData } from '../../Services/PostData';
 import { Formik } from 'formik';
 
 class Signin extends Component{

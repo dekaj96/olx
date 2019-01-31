@@ -39,27 +39,22 @@ const NavbarItem = (props) => {
             <>
             <li className = "navbar--itemsContainer--items">
                 <NavLink to="/" className="nav-link" exact activeClassName="active-link">
-                    home
-                </NavLink>
-            </li>
-            <li className = "navbar--itemsContainer--items">
-                <NavLink to="/posts" className="nav-link" activeClassName="active-link">
-                    posts
+                    show posts
                 </NavLink>
             </li>
             <li className = "navbar--itemsContainer--items">
                 <NavLink to="/new-post" className="nav-link" activeClassName="active-link">
-                        add project
+                        add post
                 </NavLink>
             </li>
             <li className = "navbar--itemsContainer--items">
                 <NavLink to={myAccountSlug} className="nav-link" activeClassName="active-link">
-                    my account
+                    your account
                 </NavLink>
             </li>
             <li className = "navbar--itemsContainer--items">
                 <NavLink to="/logout" className="nav-link" activeClassName="active-link">
-                    logout
+                    sign out
                 </NavLink>
             </li>
             </>
@@ -70,12 +65,7 @@ const NavbarItem = (props) => {
             <>
             <li className = "navbar--itemsContainer--items">
                 <NavLink to="/" className="nav-link" exact activeClassName="active-link">
-                    home
-                </NavLink>
-            </li>
-            <li className = "navbar--itemsContainer--items">
-                <NavLink to="/posts" className="nav-link" activeClassName="active-link">
-                    posts
+                    show posts
                 </NavLink>
             </li>
             <li className = "navbar--itemsContainer--items">

@@ -1,41 +1,8 @@
-import React, { Component } from 'react';
-import Navbar from '../Components/Navbar';
-import { PostData } from '../Services/PostData';
-import { Formik } from 'formik';
+import React from 'react';
+import { Formik, Form } from 'formik';
+import { PostData } from '../../Services/PostData';
 
-class Register extends Component{
-    constructor(props) {
-        super(props);
-        this.state={
-            error: null
-        };
-    }
-
-    render(){
-        if(this.state.error){
-            this.props.history.push({
-                pathname: '/show-info',
-                state: { detail: "Oops something went wrong!" }
-            });
-        }
-        return(
-            <>
-            <Navbar />
-            <main className = "regPage">
-                <section className = "form-wrapper">
-                    <h1>
-                        Create account
-                    </h1>
-                    <CustomForm
-                        history={this.props.history}
-                    />
-                </section>
-            </main>
-            </>
-        );
-    }
-}
-const CustomForm = (props) => {
+const RegisterUserFormik = (props) => {
     return (
         <Formik
         onSubmit={
@@ -118,8 +85,8 @@ const CustomForm = (props) => {
 
             return errors;
         }}
-        render={({ values, errors, handleChange, handleSubmit }) => (
-            <form onSubmit={handleSubmit}>
+        render={({ values, errors, handleChange }) => (
+            <Form>
 
                 <label htmlFor="username">
                     username
@@ -164,9 +131,10 @@ const CustomForm = (props) => {
                 </label>
 
                 <button type="submit">Submit</button>
-            </form>
+            </Form>
         )}
     />
     );
 }
-export default Register;
+
+export default RegisterUserFormik;

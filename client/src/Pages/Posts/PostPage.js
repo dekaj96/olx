@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import Navbar from '../Components/Navbar';
-import {GetData} from '../Services/GetData';
+import Navbar from '../../Components/Navbar';
+import {GetData} from '../../Services/GetData';
 
 class PostPage extends Component{
     constructor(props){
@@ -75,13 +74,11 @@ class PostListContainer extends Component {
 
         return (
         <>
-            <label htmlFor="categorySelect">
-                Select category
-                <select name="categorySelect" onChange={this.handleChange} value={this.state.selectedCat}>
-                    <option default={true} value="All">All</option>
-                    {categories.map((cat) => <option value={cat._id} key={cat._id}> {cat.name} </option>)}
-                </select>
-            </label>
+            Select category
+            <select name="categorySelect" onChange={this.handleChange} value={this.state.selectedCat}>
+                <option default={true} value="All">All</option>
+                {categories.map((cat) => <option value={cat._id} key={cat._id}> {cat.name} </option>)}
+            </select>
             <PostList posts={postsToPass} />
         </>
         );
